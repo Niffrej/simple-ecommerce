@@ -16,8 +16,10 @@ exports.registerUser = async (req, res) => {
       name,
       email,
       password,
-    });
+      isAdmin: req.body.isAdmin || false // Permitir definir isAdmin
+    });    
 
+    // Gerar o token JWT
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
       expiresIn: '30d',
     });
@@ -42,6 +44,7 @@ exports.authUser = async (req, res) => {
     const user = await User.findOne({ email });
 
     if (user && (await user.matchPassword(password))) {
+      // Gerar o token JWT
       const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
         expiresIn: '30d',
       });

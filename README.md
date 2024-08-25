@@ -1,5 +1,3 @@
-markdown
-Copiar código
 # Simple E-commerce API
 
 ## Introdução

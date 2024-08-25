@@ -1,21 +1,25 @@
-Documentação da API - Simple E-commerce
-Introdução
-Esta documentação descreve a API para um e-commerce simples. A API permite realizar operações de CRUD (Create, Read, Update, Delete) em produtos, além de gerenciar pedidos e usuários.
-
-Endpoints
-1. Autenticação
-Registrar Usuário
-URL: /api/auth/register
-Método: POST
-Descrição: Cria um novo usuário.
-Corpo da Requisição:
-json
+markdown
 Copiar código
-{
-  "name": "string",
-  "email": "string",
-  "password": "string"
-}
+# Simple E-commerce API
+
+## Introdução
+Esta API oferece funcionalidades básicas para um sistema de e-commerce, permitindo operações de CRUD (Create, Read, Update, Delete) em produtos, além de gerenciar pedidos e usuários.
+
+## Endpoints
+
+### 1. Autenticação
+
+#### Registrar Usuário
+- **URL:** `/api/auth/register`
+- **Método:** `POST`
+- **Descrição:** Cria um novo usuário.
+- **Corpo da Requisição:**
+  ```json
+  {
+    "name": "string",
+    "email": "string",
+    "password": "string"
+  }
 Resposta:
 json
 Copiar código
@@ -66,8 +70,7 @@ Adicionar Produto
 URL: /api/products
 Método: POST
 Descrição: Adiciona um novo produto.
-Cabeçalho:
-Authorization: Bearer <token>
+Cabeçalho: Authorization: Bearer <token>
 Corpo da Requisição:
 json
 Copiar código
@@ -96,8 +99,7 @@ Atualizar Produto
 URL: /api/products/:id
 Método: PUT
 Descrição: Atualiza um produto existente.
-Cabeçalho:
-Authorization: Bearer <token>
+Cabeçalho: Authorization: Bearer <token>
 Corpo da Requisição:
 json
 Copiar código
@@ -126,8 +128,7 @@ Deletar Produto
 URL: /api/products/:id
 Método: DELETE
 Descrição: Remove um produto existente.
-Cabeçalho:
-Authorization: Bearer <token>
+Cabeçalho: Authorization: Bearer <token>
 Resposta:
 json
 Copiar código
@@ -139,8 +140,7 @@ Criar Pedido
 URL: /api/orders
 Método: POST
 Descrição: Cria um novo pedido.
-Cabeçalho:
-Authorization: Bearer <token>
+Cabeçalho: Authorization: Bearer <token>
 Corpo da Requisição:
 json
 Copiar código
@@ -177,8 +177,7 @@ Listar Pedidos
 URL: /api/orders
 Método: GET
 Descrição: Retorna uma lista de pedidos.
-Cabeçalho:
-Authorization: Bearer <token>
+Cabeçalho: Authorization: Bearer <token>
 Resposta:
 json
 Copiar código
@@ -202,8 +201,7 @@ Listar Usuários
 URL: /api/users
 Método: GET
 Descrição: Retorna uma lista de usuários cadastrados.
-Cabeçalho:
-Authorization: Bearer <token>
+Cabeçalho: Authorization: Bearer <token>
 Resposta:
 json
 Copiar código
@@ -219,8 +217,7 @@ Atualizar Usuário
 URL: /api/users/:id
 Método: PUT
 Descrição: Atualiza as informações de um usuário.
-Cabeçalho:
-Authorization: Bearer <token>
+Cabeçalho: Authorization: Bearer <token>
 Corpo da Requisição:
 json
 Copiar código
@@ -244,8 +241,7 @@ Deletar Usuário
 URL: /api/users/:id
 Método: DELETE
 Descrição: Remove um usuário existente.
-Cabeçalho:
-Authorization: Bearer <token>
+Cabeçalho: Authorization: Bearer <token>
 Resposta:
 json
 Copiar código

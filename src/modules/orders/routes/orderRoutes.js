@@ -1,7 +1,6 @@
 const express = require('express');
+const { protect } = require('../../../middleware/authMiddleware');
 const { createOrder, getMyOrders } = require('../controllers/orderController');
-const { protect } = require('../middleware/authMiddleware');
-
 const router = express.Router();
 
 // Rota para criar um novo pedido

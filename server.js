@@ -1,8 +1,8 @@
 const express = require('express');
 const connectDB = require('./src/config/db');
-const authRoutes = require('./src/routes/authRoutes');
-const productRoutes = require('./src/routes/productRoutes');
-const orderRoutes = require('./src/routes/orderRoutes');
+const authRoutes = require('./src/modules/auth/routes/authRoutes');
+const productRoutes = require('./src/modules/products/routes/productRoutes');
+const orderRoutes = require('./src/modules/orders/routes/orderRoutes');
 const cors = require('cors'); // Importação do CORS
 
 const app = express();

@@ -5,7 +5,6 @@ const productRoutes = require('./src/modules/products/routes/productRoutes');
 const orderRoutes = require('./src/modules/orders/routes/orderRoutes');
 const cartRoutes = require('./src/modules/cart/routes/cartRoutes');
 const wishlistRoutes = require('./src/modules/wishList/routes/wishListRoutes');
-const reviewRoutes = require('./src/modules/reviews/routes/reviewRoutes');
 
 const app = express();
 
@@ -21,7 +20,6 @@ app.use('/api/products', productRoutes);
 app.use('/api/orders', orderRoutes);
 app.use('/api/cart', cartRoutes);
 app.use('/api/wishlist', wishlistRoutes);
-app.use('/api/reviews', reviewRoutes);
 
 const PORT = process.env.PORT || 5000;
 

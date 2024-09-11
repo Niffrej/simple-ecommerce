@@ -1,3 +1,27 @@
+# Simple E-Commerce API
+
+Este projeto é uma API simples de e-commerce, construída com Node.js, MongoDB, Express e outras tecnologias modernas. A API permite a autenticação de usuários, gerenciamento de produtos, pedidos, carrinho de compras, e wishlist. Além disso, os usuários podem avaliar produtos e deixar reviews.
+
+## Funcionalidades
+
+- Autenticação de Usuários (JWT)
+- Gerenciamento de Produtos
+- Gerenciamento de Pedidos
+- Carrinho de Compras
+- Wishlist (Lista de Desejos)
+- Avaliações e Reviews de Produtos
+- Integração com ViaCEP para cálculo de CEP
+- Estrutura modular com pastas configuradas como `config`, `middleware` e `modules`.
+
+## Tecnologias Utilizadas
+
+- Node.js
+- Express
+- MongoDB (MongoDB Atlas)
+- Mongoose
+- JWT para autenticação
+- Docker (opcional para containerização)
+- Tailwind CSS e React para o front-end
 
 ## Instalação
 

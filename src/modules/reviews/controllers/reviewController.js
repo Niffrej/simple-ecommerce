@@ -1,4 +1,4 @@
-const Review = require('../../review/models/reviewModel');
+const Review = require('../../reviews/models/reviewModel');
 const Product = require('../../products/models/Product');
 
 // Adicionar uma avaliação

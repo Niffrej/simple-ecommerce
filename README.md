@@ -1,91 +1,208 @@
-# Simple E-commerce
 
-Este projeto é uma aplicação de e-commerce simples construída com Node.js e MongoDB. O objetivo principal é fornecer um exemplo básico de uma API RESTful para operações CRUD em um e-commerce, incluindo funcionalidades para gerenciamento de produtos, usuários e pedidos.
+## Instalação
 
-## Tecnologias Utilizadas
 
-- **Node.js**: Plataforma de desenvolvimento para back-end.
-- **Express.js**: Framework para criação da API.
-- **MongoDB**: Banco de dados NoSQL utilizado para armazenar os dados.
-- **Mongoose**: Biblioteca ODM para modelagem de dados no MongoDB.
-- **JWT (JSON Web Tokens)**: Autenticação e autorização de usuários.
-- **BCrypt**: Criptografia de senhas.
+#### Siga estas etapas para configurar o projeto localmente:
 
-## Funcionalidades
+1- Clone o repositório:
 
-- **CRUD de Produtos**: Criação, leitura, atualização e exclusão de produtos.
-- **CRUD de Usuários**: Criação, leitura, atualização e exclusão de usuários.
-- **Autenticação de Usuários**: Registro, login e logout utilizando JWT.
-- **Gestão de Pedidos**: Criação e gerenciamento de pedidos de compra.
+```http
+  git clone https://github.com/Niffrej/simple-ecommerce.git
+```
 
-## Pré-requisitos
 
-Antes de iniciar, certifique-se de ter as seguintes ferramentas instaladas em sua máquina:
 
-- [Node.js](https://nodejs.org/)
-- [MongoDB](https://www.mongodb.com/)
-- [MongoDB Compass](https://www.mongodb.com/products/compass) (opcional para visualização do banco de dados)
+2- Instale as dependências:
+```http
+  npm install
+```
 
-## Configuração do Projeto
+3- Configure as variáveis de ambiente criando um arquivo .env na raiz do projeto com as seguintes informações:
 
-1. **Clone o repositório:**
+```bash
+  MONGO_URI=<sua-string-de-conexão-mongodb>
+  JWT_SECRET=<sua-chave-secreta>
+```
 
-   ```bash
-   git clone https://github.com/Niffrej/simple-ecommerce.git
-   cd simple-ecommerce
-
-2. Instale as dependências:
-
- - npm install
-
- 3. Configuração do MongoDB:
-
- No arquivo .env, configure a conexão com seu banco de dados MongoDB. Por exemplo:
-
- MONGODB_URI=mongodb://localhost:27017/simple-ecommerce
-JWT_SECRET=sua_chave_secreta
-
-4. Execute a aplicação:
-
- - npm start
-
- A aplicação estará rodando em `http://localhost:3000`
+4- Inicie o servidor: 
+```http
+  npm start
+```
 
 # Endpoints da API
 
-### Autenticação
-* POST /api/register: Registro de um novo usuário.
-* POST /api/login: Autenticação de um usuário.
-* POST /api/logout: Logout do usuário autenticado.
+## Autenticação
 
-### Produtos
-* GET /api/products: Lista todos os produtos.
-* GET /api/products/
-: Detalhes de um produto específico.
-* POST /api/products: Cria um novo produto.
-* PUT /api/products/
-: Atualiza um produto existente.
-* DELETE /api/products/
-: Remove um produto.
+### Registrar Usuário
 
-### Usuários
-* GET /api/users: Lista todos os usuários.
-* GET /api/users/
-: Detalhes de um usuário específico.
-* PUT /api/users/
-: Atualiza um usuário existente.
-* DELETE /api/users/
-: Remove um usuário.
+  - POST /auth/register
+     - Registra um novo usuário.
+     - Body:
 
-### Pedidos
-* GET /api/orders: Lista todos os pedidos.
-* GET /api/orders/
-: Detalhes de um pedido específico.
-* POST /api/orders: Cria um novo pedido.
-* PUT /api/orders/
-: Atualiza um pedido existente.
-* DELETE /api/orders/
-: Remove um pedido.
+```http
+        {
+        "name": "Nome",
+        "email": "email@example.com",
+        "password": "senha"
+        }
+```
 
-### Conclusão
-Essa API fornece uma base para gerenciar um e-commerce simples, permitindo a criação, atualização, leitura e exclusão de produtos, pedidos e usuários. A autenticação baseada em tokens garante que apenas usuários autorizados possam realizar operações sensíveis.
+### Login de Usuário
+
+ - POST /auth/login
+   - Faz login de um usuário registrado.
+   - Body: 
+
+```http
+     {
+        "email": "email@example.com",
+        "password": "senha"
+     }
+```
+
+### Registrar Usuário
+
+  - POST /auth/register
+     - Registra um novo usuário.
+     - Body:
+
+```http
+        {
+        "name": "Nome",
+        "email": "email@example.com",
+        "password": "senha"
+        }
+```
+
+## Produtos
+
+### Listar Produtos
+
+ - GET /products
+   - Retorna todos os produtos cadastrados.
+
+### Detalhes do Produto 
+
+ - Detalhes do Produto
+   - Retorna os detalhes de um produto específico.
+
+### Criar Produto
+
+ - POST /products
+   - Cria um novo produto.
+   - Body: 
+
+```http
+    {
+        "name": "Nome do produto",
+        "description": "Descrição do produto",
+        "price": 100.00,
+        "stock": 50,
+        "image": "url-da-imagem"
+    }
+```
+
+## Pedidos
+
+### Criar Pedido 
+
+  - POST /orders
+     - Cria um novo pedido.
+     - Body:
+
+```http
+        {
+            "userId": "ID do usuário",
+            "items": [
+                {
+                "productId": "ID do produto",
+                "quantity": 2
+                }
+            ],
+            "total": 200.00
+        }
+```
+
+### Ver Pedidos do Usuário
+
+- GET /orders/user/:userId
+  - Retorna todos os pedidos de um usuário específico.
+
+## Carrinho de Compras
+
+### Adicionar Produto ao Carrinho
+
+ - POST /cart
+   - Adiciona um produto ao carrinho.
+   - Body: 
+
+```http
+        {
+            "userId": "ID do usuário",
+            "productId": "ID do produto",
+            "quantity": 1
+        }
+```
+
+### Visualizar Carrinho do Usuário
+
+ - GET /cart/:userId
+   - Retorna os itens do carrinho de um usuário específico.
+
+## WishList
+
+## Adicionar Produto à Wishlist
+
+ - POST /wishlist
+   - Adiciona um produto à lista de desejos.
+   - Body: 
+
+   ```http
+        {
+            "userId": "ID do usuário",
+            "productId": "ID do produto"
+        }
+    ```
+
+### Ver Wishlist do Usuário
+
+ - GET /wishlist/:userId
+   - Retorna a lista de desejos de um usuário específico.
+
+## Avaliações e Reviews
+
+### Adicionar Review ao Produto
+
+ - POST /reviews
+   - Adiciona uma avaliação ao produto.
+   - Body:
+
+   ```http
+       {
+        "userId": "ID do usuário",
+        "productId": "ID do produto",
+        "rating": 4,
+        "comment": "Ótimo produto!"
+        }
+    ```
+
+ ### Ver Reviews de um Produto
+ 
+    - GET /reviews/:productId
+    - Retorna todas as avaliações de um produto específico.
+
+## ViaCEP
+
+### Consultar CEP
+
+- GET /cep/:cep
+  - Retorna informações do CEP utilizando a API do ViaCEP.
+
+## Estrutura do Projeto
+ ```bash 
+      ├── config/            # Configurações da aplicação
+      ├── middleware/        # Middlewares como autenticação
+      ├── modules/           # Módulos da aplicação (users, products, orders, etc)
+      ├── routes/            # Definição das rotas da API
+      └── server.js          # Ponto de entrada da aplicação
+```

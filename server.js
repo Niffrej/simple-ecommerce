@@ -1,5 +1,6 @@
 const express = require('express');
 const connectDB = require('./src/config/db');
+const cors = require('cors');
 const authRoutes = require('./src/modules/auth/routes/authRoutes');
 const productRoutes = require('./src/modules/products/routes/productRoutes');
 const orderRoutes = require('./src/modules/orders/routes/orderRoutes');
@@ -10,11 +11,15 @@ const shippingRoutes = require('./src/modules/shipping/routes/shippingRoutes');
 
 const app = express();
 
-// Conectar ao banco de dados
+const corsOptions = {
+  origin: 'http://localhost:3000',
+  optionsSuccessStatus: 200
+};
+
 connectDB();
 
-// Middleware para interpretar JSON
 app.use(express.json());
+app.use(cors(corsOptions));
 
 // Rotas
 app.use('/api/auth', authRoutes);

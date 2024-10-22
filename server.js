@@ -12,7 +12,7 @@ const shippingRoutes = require('./src/modules/shipping/routes/shippingRoutes');
 const app = express();
 
 const corsOptions = {
-  origin: 'https://simple-ecommerce-p704.onrender.com',
+  origin: 'https://simple-ecommerce-front.vercel.app/',
   optionsSuccessStatus: 200
 };
 

@@ -12,7 +12,7 @@ const shippingRoutes = require('./src/modules/shipping/routes/shippingRoutes');
 const app = express();
 
 const corsOptions = {
-  origin: 'http://localhost:3000',
+  origin: 'https://simple-ecommerce-p704.onrender.com',
   optionsSuccessStatus: 200
 };
 

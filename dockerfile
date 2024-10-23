@@ -1,18 +1,20 @@
-# Base image
-FROM node:18-alpine
+# Usa a imagem oficial do Node.js como base
+FROM node:14
 
-# Set working directory
-WORKDIR /app
+# Define o diretório de trabalho
+WORKDIR /usr/src/app
 
-# Install dependencies
+# Copia o package.json e package-lock.json
 COPY package*.json ./
-RUN npm install --production
 
-# Copy the rest of the application files
+# Instala as dependências
+RUN npm install
+
+# Copia o restante do código para o contêiner
 COPY . .
 
-# Expose the port the app runs on
+# Expõe a porta que o app vai rodar
 EXPOSE 3000
 
-# Start the application
+# Comando para iniciar o servidor
 CMD ["npm", "start"]
